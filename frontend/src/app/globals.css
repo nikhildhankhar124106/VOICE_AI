@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --primary: #ffffff;
+  --secondary: #a1a1aa;
+  --muted: #71717a;
+  --accent: #10b981;
+  --border: #27272a;
+  --surface: #18181b;
+  --surface-hover: #27272a;
+  --mono: 'JetBrains Mono', monospace;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* Background Effects - Subtle grain and soft glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3*Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+/* Typography Refinement */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--secondary);
+  font-size: 1.1rem;
+}
+
+/* Hero & Layout */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 5rem;
+  margin-bottom: 8rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.breadcrumb {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Workspace Status Card (Formerly Telemetry) */
+.telemetry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.telemetry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.telemetry-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.telemetry-live {
+  font-size: 0.7rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.stat-box .label {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.stat-box .value {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: var(--mono);
+}
+
+.progress-section {
+  margin-bottom: 2rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.progress-bar-bg {
+  height: 4px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.telemetry-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+/* Voice Control Interface */
+.command-container {
+  width: 100%;
+}
+
+.command-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.command-bar.active {
+  border-color: var(--muted);
+}
+
+.mic-button {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--background);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--secondary);
+}
+
+.mic-button:hover {
+  background: var(--surface-hover);
+  border-color: var(--muted);
+  color: var(--primary);
+}
+
+.recording .mic-button {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: white;
+}
+
+.transcription-area {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--secondary);
+}
+
+.kbd-badge {
+  background: var(--background);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+.command-pill {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  border-radius: 100px;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.command-pill:hover {
+  border-color: var(--muted);
+  color: var(--primary);
+  background: rgba(255,255,255,0.02);
+}
+
+/* Task Workspace */
+.workspace-section {
+  border-top: 1px solid var(--border);
+  padding-top: 5rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3rem;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task-item {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.task-item:hover {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+.task-checkbox-outer {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--muted);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.task-item.completed .task-checkbox-outer {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.task-checkbox-inner {
+  color: transparent;
+}
+
+.task-item.completed .task-checkbox-inner {
+  color: #fff;
+}
+
+.task-content-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.task-item.completed .task-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.task-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.priority-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.priority-tag.high { color: #f87171; }
+.priority-tag.medium { color: #60a5fa; }
+
+.time-tag {
+  font-size: 0.75rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Breathing Animation for Voice */
+@keyframes breathing {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.5); opacity: 1; }
+}
+
+.wave-bar {
+  background: var(--primary) !important;
+}

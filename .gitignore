@@ -1,0 +1,61 @@
+# Dependency directories
+node_modules/
+frontend/node_modules/
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+backend/__pycache__/
+
+# Next.js build output
+.next/
+frontend/.next/
+out/
+frontend/out/
+
+# IDE files
+.vscode/
+.idea/
+.DS_Store
+**/.DS_Store
+
+# Environment variables
+.env
+.env*
+!.env.example
+backend/.env
+frontend/.env*
+
+# Databases
+*.db
+*.sqlite3
+todo.db
+backend/todo.db
+
+# Audio/Temp files
+temp_audio/
+backend/temp_audio/
+scratch/
+
+# Build artifacts
+dist/
+build/
+frontend/build/
+
+# Testing
+coverage/
+frontend/coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+frontend/next-env.d.ts
