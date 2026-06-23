@@ -6,7 +6,7 @@ import VoiceAssistant from '@/components/VoiceAssistant';
 import { Check, Zap, Shield, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 interface Task {
   id: number;

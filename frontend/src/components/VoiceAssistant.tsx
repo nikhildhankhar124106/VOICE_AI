@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Mic, Loader2, Command } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_URL = 'http://localhost:8000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export default function VoiceAssistant({ onRefreshTasks }: { onRefreshTasks: () => void }) {
   const [isRecording, setIsRecording] = useState(false);
